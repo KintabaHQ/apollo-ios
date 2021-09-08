@@ -109,6 +109,24 @@ extension ApolloClient: ApolloClientProtocol {
     watcher.fetch(cachePolicy: cachePolicy)
     return watcher
   }
+  
+  public func watch<Fragment: GraphQLFragment>(
+    forType: Fragment.Type,
+    cacheKey: CacheKey,
+    callbackQueue: DispatchQueue = DispatchQueue.main,
+    resultHandler: @escaping GraphQLFragmentWatcher<Fragment>.FragmentResultHandler
+  ) -> GraphQLFragmentWatcher<Fragment> {
+    let watcher = GraphQLFragmentWatcher(
+      client: self,
+      forType: forType,
+      cacheKey: cacheKey,
+      callbackQueue: callbackQueue,
+      resultHandler: resultHandler
+    )
+    watcher.fetch()
+    return watcher
+  }
+  
 
   @discardableResult
   public func perform<Mutation: GraphQLMutation>(mutation: Mutation,

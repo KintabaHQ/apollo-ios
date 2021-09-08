@@ -199,7 +199,7 @@ public final class ApolloStore {
                          accumulator: mapper)
     }
 
-    fileprivate func execute<Accumulator: GraphQLResultAccumulator>(selections: [GraphQLSelection], onObjectWithKey key: CacheKey, variables: GraphQLMap?, accumulator: Accumulator) throws -> Accumulator.FinalResult {
+    func execute<Accumulator: GraphQLResultAccumulator>(selections: [GraphQLSelection], onObjectWithKey key: CacheKey, variables: GraphQLMap?, accumulator: Accumulator) throws -> Accumulator.FinalResult {
       let object = try loadObject(forKey: key).get()
       
       let executor = GraphQLExecutor { object, info in

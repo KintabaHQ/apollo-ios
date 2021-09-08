@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Apollo'
-  s.version      = `scripts/get-version.sh`
+  s.version      = '0.48.1'
   s.author       = 'Meteor Development Group'
   s.homepage     = 'https://github.com/apollographql/apollo-ios'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
